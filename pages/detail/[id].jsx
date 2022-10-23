@@ -49,23 +49,30 @@ export default function NewsDetail() {
           Back
         </button>
 
-        <div className="row mx-5">
-          <div className="col-12">
-            <p className="text-center fs-2">{newsState.detailNews.title}</p>
-          </div>
-          <div className="col-12">
-            <img
-              src={newsState.detailNews.media[0]?.['media-metadata'][2]?.url}
-              className="rounded mx-auto d-block"
-              alt="image"
-            />
-          </div>
-          <div className="col-12">
-            <p className="text-center">{newsState.detailNews.byline}</p>
-          </div>
-          <div className="col-12">
-            <p className="text-center">
+        {newsState.detailNews && (
+          <div className="row mx-5">
+            <div className="col-12">
+              <p className="text-center fs-2">{newsState.detailNews.title}</p>
+            </div>
+
+            <div className="col-12">
+              <img
+                src={newsState.detailNews.media[0]?.['media-metadata'][2]?.url}
+                className="rounded mx-auto d-block img-fluid"
+                alt="image"
+              />
+            </div>
+
+            <div className="col-12">
               <small className="text-muted">
+                <p className="text-center">
+                  {newsState.detailNews.media[0]?.caption}
+                </p>
+              </small>
+            </div>
+
+            <div className="col-12">
+              <p className="text-center m-0">
                 Published at{' '}
                 {new Date(
                   newsState.detailNews.published_date
@@ -75,13 +82,18 @@ export default function NewsDetail() {
                   'en-US',
                   options
                 )}
-              </small>
-            </p>
+              </p>
+            </div>
+
+            <div className="col-12">
+              <p className="text-center">{newsState.detailNews.byline}</p>
+            </div>
+
+            <div className="col-12">
+              <p className="text-center">{newsState.detailNews.abstract}</p>
+            </div>
           </div>
-          <div className="col-12">
-            <p className="text-center">{newsState.detailNews.abstract}</p>
-          </div>
-        </div>
+        )}
       </main>
     </div>
   );

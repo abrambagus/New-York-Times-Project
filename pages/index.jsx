@@ -15,7 +15,7 @@ export default function Home({ data }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (data.results) {
+    if (data.results.length !== 0) {
       dispatch(setNews(data.results));
     }
   }, [dispatch]);
